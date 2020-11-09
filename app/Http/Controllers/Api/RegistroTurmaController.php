@@ -21,12 +21,15 @@ class RegistroTurmaController extends Controller
         ];
         $validator = Validator::make($request->all(), $rules);
         if($validator->fails()){
-            return view('home.rturma', ['errors' => $validator->errors()]);
+            return response()->view('home.rturma', ['errors' => $validator->errors()], 400);
+        } else{
+            $disciplina->create(['nome' => $request['nome'],
+                'horario' => $request['horario'],
+                'dia' => implode(',', $request['dia'])
+            ]);
+            return response()->view('home.rturma', [], 201);
         }
-        $disciplina->create(['nome' => $request['nome'],
-            'horario' => $request['horario'],
-            'dia' => $request['dia']
-        ]);
+
     }
 
 }

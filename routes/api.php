@@ -7,8 +7,9 @@ use Illuminate\Support\Facades\Route;
 Route::namespace('App\Http\Controllers\Api')->name('api.')->group(function(){
     Route::get('/', 'HomeController@index')->name('index');
 
-    Route::group(['middleware' => ['web']], function () {
+    Route::group(['middleware' => 'web'], function () {
         Route::get('/registro-turma', 'RegistroTurmaController@index')->name('rturma');
+        Route::post('/registro-turma', 'RegistroTurmaController@store');
     });
 
 
@@ -19,7 +20,3 @@ Route::namespace('App\Http\Controllers\Api')->name('api.')->group(function(){
 	Route::get('/visualizacao-resposta', 'VisualizacaoRespostaController@index')->name('vresposta');
 });
 Route::post('/login', 'App\Http\Controllers\Api\AuthController@login');
-
-Route::group(['middleware' => ['apiJwt']], function () {
-    Route::post('/registro-turma', 'App\Http\Controllers\Api\RegistroTurmaController@store');
-});

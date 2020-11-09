@@ -22,7 +22,9 @@
             </ul>
         </div>
     @endif
+
     <form method="POST" action="{{ route('api.rturma') }}">
+        {{ csrf_field() }}
 		<br />
 
 		<label for="nome">Nome da disciplina</label>
