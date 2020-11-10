@@ -1,16 +1,15 @@
 @extends('layouts.navbar')
 @section('content')
 <div class="container container-fluid">
-    @if(Session::has('msg_success'))
+    @if($msg == 'Saved Succesfully')
         <div class="alert alert-success">
-            {{ Session::get('msg_success') }}
+            {{ $msg }}
         </div>
-        @else
-        @if(Session::has('msg_update'))
-            <div class="alert alert-success">
-                {{ Session::get('msg_update') }}
-            </div>
-        @endif
+    @endif
+    @if($msg == 'Updated succesfully')
+        <div class="alert alert-success">
+            {{ $msg }}
+        </div>
     @endif
 
     @if ($errors->any())

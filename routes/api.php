@@ -1,6 +1,5 @@
 <?php
 
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 
@@ -11,7 +10,6 @@ Route::namespace('App\Http\Controllers\Api')->name('api.')->group(function(){
         Route::get('/registro-turma', 'RegistroTurmaController@index')->name('rturma');
         Route::post('/registro-turma', 'RegistroTurmaController@store');
     });
-
 
 	Route::get('/registro-atividade', 'RegistroAtividadeController@index')->name('ratividade');
 	Route::get('/visualizacao-pontuacao', 'VisualizacaoPontuacaoController@index')->name('vpontuacao');

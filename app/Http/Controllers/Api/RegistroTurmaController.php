@@ -10,7 +10,7 @@ use App\Models\Disciplina;
 class RegistroTurmaController extends Controller
 {
     public function index(){
-        return view('home.rturma');
+        return view('home.rturma', ['msg' => '']);
     }
     public function store(Request $request){
         $disciplina = new Disciplina();
@@ -27,7 +27,7 @@ class RegistroTurmaController extends Controller
                 'horario' => $request['horario'],
                 'dia' => implode(',', $request['dia'])
             ]);
-            return response()->view('home.rturma', [], 201);
+            return response()->view('home.rturma', ['msg' => 'Succesfully'], 201);
         }
 
     }
