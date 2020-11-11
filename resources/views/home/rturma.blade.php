@@ -3,12 +3,12 @@
 <div class="container container-fluid">
     @if($msg == 'Saved Succesfully')
         <div class="alert alert-success">
-            {{ $msg }}
+            {{ $msg ?? '' }}
         </div>
     @endif
     @if($msg == 'Updated succesfully')
         <div class="alert alert-success">
-            {{ $msg }}
+            {{ $msg ?? '' }}
         </div>
     @endif
 

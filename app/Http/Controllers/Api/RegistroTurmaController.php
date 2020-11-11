@@ -10,7 +10,7 @@ use App\Models\Disciplina;
 class RegistroTurmaController extends Controller
 {
     public function index(){
-        return view('home.rturma', ['msg' => '']);
+        return view('home.rturma', ['msg' => 'fdf']);
     }
     public function store(Request $request){
         $disciplina = new Disciplina();
@@ -21,13 +21,13 @@ class RegistroTurmaController extends Controller
         ];
         $validator = Validator::make($request->all(), $rules);
         if($validator->fails()){
-            return response()->view('home.rturma', ['errors' => $validator->errors()], 400);
+            return response()->view('home.rturma', ['msg'=> '', 'errors' => $validator->errors()], 400);
         } else{
             $disciplina->create(['nome' => $request['nome'],
                 'horario' => $request['horario'],
                 'dia' => implode(',', $request['dia'])
             ]);
-            return response()->view('home.rturma', ['msg' => 'Succesfully'], 201);
+            return response()->view('home.rturma', ['msg' => 'Saved Succesfully'], 201);
         }
 
     }

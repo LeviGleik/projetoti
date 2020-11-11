@@ -1,25 +1,45 @@
 @extends('layouts.navbar')
 @section('content')
 <div class="container container-fluid">
-    <form action="#">
+    @if($msg == 'Saved Succesfully')
+        <div class="alert alert-success">
+            {{ $msg ?? '' }}
+        </div>
+    @endif
+    @if($msg == 'Updated succesfully')
+        <div class="alert alert-success">
+            {{ $msg ?? '' }}
+        </div>
+    @endif
+
+    @if ($errors->any())
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
+    <form method="POST" action="{{ route('api.ratividade') }}">
+        {{ csrf_field() }}
         <br />
-        <label for="atv_name">Nome da atividade</label>
-        <input type="text" class="form-control" name="atv_name" id="atv_name">
+        <label for="nome">Nome da atividade</label>
+        <input type="text" class="form-control" name="nome" id="nome">
         <br />
         <label for="disciplina">Disciplina</label>
-        <select id="disciplina" class="form-control">
-            <option value="estruturas">Estrutura de dados</option>
-            <option value="estruturas_2">Estrutura de dados 2</option>
-            <option value="tecnologia_i">Tecnologias de Internet</option>
-            <option value="comp_grafica">Computação Gráfica</option>
+        <select name="disciplina" id="disciplina" class="form-control">
+            @foreach ($disciplinas as $disciplina)
+                <option value="{{ $disciplina->id }}">{{ $disciplina->nome }}</option>
+            @endforeach
         </select>
         <br />
-        <label for="atv" id="latv">Atividade</label>
-        <textarea class="form-control" name="atv" id="atv"></textarea>
+        <label for="conteudo">Atividade</label>
+        <textarea class="form-control" name="conteudo" id="conteudo"></textarea>
         <br />
-        <label for="apoio">Material de apoio</label>
+        <label for="material">Material de apoio</label>
         <div>
-            <input type="file" name="apoio" id="apoio" class="form-file">
+            <input type="file" name="material" id="material" class="form-file">
         </div>
         <br />
         <button class="btn btn-outline-secondary" type="submit">Enviar</button>

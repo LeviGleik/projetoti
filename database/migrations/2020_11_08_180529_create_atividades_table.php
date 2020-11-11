@@ -16,8 +16,9 @@ class CreateAtividadesTable extends Migration
         Schema::create('atividades', function (Blueprint $table) {
             $table->id();
             $table->string('nome');
-            $table->string('conteudo');
-            $table->string('material');
+            $table->string('conteudo')->nullable();
+            $table->binary('material')->nullable();
+            $table->foreignId('disciplina_id')->constrained();
             $table->timestamps();
         });
     }
