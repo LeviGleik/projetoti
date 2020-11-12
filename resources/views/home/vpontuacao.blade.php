@@ -5,85 +5,20 @@
     <table class="table table-hover">
       <thead class="thead-light">
         <tr>
-          <th scope="col" hidden>#</th>
           <th scope="col">Aluno</th>
           <th scope="col">Disciplina</th>
           <th scope="col" id="pontuacao">Pontuação</th>
         </tr>
       </thead>
       <tbody>
+
+        @foreach ($alunos as $aluno)
         <tr>
-          <th scope="row" hidden>1</th>
-          <td>Renan Gomes</td>
-          <td>Estrutura de dados</td>
-          <td class="pont">5.7</td>
+            <td> {{ $aluno->nome }}</td>
+            <td> {{ $aluno->find($aluno->id)->disciplinas->first()->nome }}</td>
+            <td> {{ $aluno->nota }}</td>
         </tr>
-        <tr>
-          <th scope="row" hidden>2</th>
-          <td>João Silva</td>
-          <td>Estrutura de dados 2</td>
-          <td class="pont">7.2</td>
-        </tr>
-        <tr>
-          <th scope="row" hidden>3</th>
-          <td>Pedro Costa</td>
-          <td>Teconologias de internet</td>
-          <td class="pont">8.4</td>
-        </tr>
-        <tr>
-          <th scope="row" hidden>4</th>
-          <td>Júnior Santos</td>
-          <td>Estrutura de dados 2</td>
-          <td class="pont">6.1</td>
-        </tr>
-        <tr>
-          <th scope="row" hidden>5</th>
-          <td>Matias Nogueira</td>
-          <td>Computação gráfica</td>
-          <td class="pont">6.8</td>
-        </tr>
-        <tr>
-          <th scope="row" hidden>6</th>
-          <td>Shirlane Pereira</td>
-          <td>Teconologias de internet</td>
-          <td class="pont">2.4</td>
-        </tr>
-        <tr>
-          <th scope="row" hidden>7</th>
-          <td>Maria Julieta</td>
-          <td>Estrutura de dados</td>
-          <td class="pont">7.4</td>
-        </tr>
-        <tr>
-          <th scope="row" hidden>8</th>
-          <td>Pedro Lucas</td>
-          <td>Computação gráfica</td>
-          <td class="pont">4.2</td>
-        </tr>
-        <tr>
-          <th scope="row" hidden>9</th>
-          <td>Marília Freitas</td>
-          <td>Computação gráfica</td>
-          <td class="pont">9.8</td>
-        </tr>
-        <tr>
-          <th scope="row" hidden>10</th>
-          <td>Lucas Neto</td>
-          <td>Estrutura de dados</td>
-          <td class="pont">9.2</td>
-        </tr>
-        <tr>
-          <th scope="row" hidden>11</th>
-          <td>Aline Silva</td>
-          <td>Tecnologias de internet</td>
-          <td class="pont">6.2</td>
-        </tr>
-        <tr>
-          <th scope="row" hidden>12</th>
-          <td>André Matos</td>
-          <td>Teconologias de internet</td>
-          <td class="pont">5.4</td>
-        </tr>
+        @endforeach
       </tbody>
     </table>
 </div>

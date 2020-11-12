@@ -18,6 +18,8 @@ class CreateAlunosTable extends Migration
             $table->string('nome');
             $table->string('email')->unique();
             $table->string('senha');
+            $table->foreignId('disciplina_id')->constrained();
+            $table->double('nota');
             $table->timestamps();
         });
     }
