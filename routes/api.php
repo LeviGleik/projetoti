@@ -14,9 +14,20 @@ Route::namespace('App\Http\Controllers\Api')->name('api.')->group(function(){
         Route::get('/registro-atividade', 'RegistroAtividadeController@index')->name('ratividade');
         Route::post('/registro-atividade', 'RegistroAtividadeController@store');
     });
+
+    Route::group(['middleware' => 'web'], function () {
+        Route::get('/matricular-turma', 'MatricularTurmaController@index')->name('mturma');
+        Route::post('/matricular-turma', 'MatricularTurmaController@store');
+    });
 	Route::get('/visualizacao-pontuacao', 'VisualizacaoPontuacaoController@index')->name('vpontuacao');
-	Route::get('/matricular-turma', 'MatricularTurmaController@index')->name('mturma');
-	Route::get('/realizar-atividade', 'RealizarAtividadeController@index')->name('realizaratv');
-	Route::get('/visualizacao-resposta', 'VisualizacaoRespostaController@index')->name('vresposta');
+
+    Route::group(['middleware' => 'web'], function () {
+        Route::get('/realizar-atividade', 'RealizarAtividadeController@index')->name('realizaratv');
+        Route::post('/realizar-atividade', 'RealizarAtividadeController@store');
+    });
+    Route::group(['middleware' => 'web'], function () {
+        Route::get('/visualizacao-resposta', 'VisualizacaoRespostaController@index')->name('vresposta');
+        Route::post('/visualizacao-resposta', 'VisualizacaoRespostaController@store');
+    });
 });
 Route::post('/login', 'App\Http\Controllers\Api\AuthController@login');

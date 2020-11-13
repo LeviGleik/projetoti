@@ -1,23 +1,20 @@
 @extends('layouts.navbar')
 @section('content')
 <div class="container container-fluid">
-    <form action="#">
+    <form>
         <br />
         <label for="disciplina">Disciplina</label>
         <select id="disciplina" class="form-control">
-            <option value="estruturas">Estrutura de dados</option>
-            <option value="estruturas_2">Estrutura de dados 2</option>
-            <option value="tecnologia_i">Tecnologias de Internet</option>
-            <option value="comp_grafica">Computação Gráfica</option>
+            @foreach ($disciplinas as $disciplina)
+                <option value="{{ $disciplina->id }}">{{ $disciplina->nome }}</option>
+            @endforeach
         </select>
 
         <label for="atvd">Atividades</label>
         <select id="atvd" class="form-control">
-            <option value='ponteiro'>Manipulação de ponteiros</option>
-            <option value='pilha'>Pilhas</option>
-            <option value='fila'>Filas</option>
-            <option value='lista_s'>Trabalhando com listas</option>
-            <option value='lista_e'>Listas encadeadas</option>
+            @foreach ($atividades as $atividade)
+                <option value='{{ $atividade->id }}'>{{ $atividade->nome }}</option>
+            @endforeach
         </select>
         <label for="ta">Respostas</label>
         <textarea disabled="" id="ta" class="form-control" style="height: 250px">
@@ -32,7 +29,6 @@
 9 - e
 10 - c</textarea>
         <br />
-        <button class="btn btn-outline-secondary" type="submit">Enviar</button>
     </form>
 </div>
 <script type="text/javascript">

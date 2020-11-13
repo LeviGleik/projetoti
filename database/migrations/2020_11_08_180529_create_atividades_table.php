@@ -18,6 +18,7 @@ class CreateAtividadesTable extends Migration
             $table->string('nome');
             $table->string('conteudo')->nullable();
             $table->binary('material')->nullable();
+            $table->string('resposta');
             $table->foreignId('disciplina_id')->constrained();
             $table->timestamps();
         });
