@@ -6,6 +6,8 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Disciplina;
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 
 class RegistroTurmaController extends Controller
 {
@@ -14,6 +16,7 @@ class RegistroTurmaController extends Controller
     }
     public function store(Request $request){
         $disciplina = new Disciplina();
+        $user = Auth::user();
         $rules = [
             'nome' => 'required|max:50',
             'dia' => 'required',
@@ -25,7 +28,8 @@ class RegistroTurmaController extends Controller
         } else{
             $disciplina->create(['nome' => $request['nome'],
                 'horario' => $request['horario'],
-                'dia' => implode(',', $request['dia'])
+                'dia' => implode(',', $request['dia']),
+                'user_id' => $user->id
             ]);
             return response()->view('home.rturma', ['msg' => 'Saved Succesfully'], 201);
         }

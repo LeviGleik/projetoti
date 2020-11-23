@@ -14,7 +14,10 @@ class Disciplina extends Model
     protected $fillable = [
     	'nome',
 		'horario',
-		'dia'
-	];
-
+        'dia',
+        'user_id'
+    ];
+    public function users(){
+        return $this->belongsTo('App\Models\User', 'user_id', 'id');
+    }
 }

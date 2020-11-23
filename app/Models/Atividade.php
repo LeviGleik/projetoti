@@ -16,4 +16,9 @@ class Atividade extends Model
         'disciplina_id',
 		'material'
     ];
+
+    public function disciplinas(){
+        return $this->hasMany('App\Models\Disciplina', 'id', 'disciplina_id');
+    }
+
 }

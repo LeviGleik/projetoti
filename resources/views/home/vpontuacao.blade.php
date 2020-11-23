@@ -14,8 +14,8 @@
 
         @foreach ($alunos as $aluno)
         <tr>
-            <td> {{ $aluno->nome }}</td>
-            <td> {{ $aluno->find($aluno->id)->disciplinas->first()->nome }}</td>
+            <td> {{ $aluno->name }}</td>
+            <td> {{ $disciplinas->find($aluno->id)->nome }}</td>
             <td> {{ $aluno->nota }}</td>
         </tr>
         @endforeach

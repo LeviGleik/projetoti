@@ -24,11 +24,12 @@ class CreateNewUser implements CreatesNewUsers
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => $this->passwordRules(),
         ])->validate();
-
+        $professor = !isset($input['professor']) ? 0 : 1;
         return User::create([
             'name' => $input['name'],
             'email' => $input['email'],
             'password' => Hash::make($input['password']),
+            'professor' => $professor,
         ]);
     }
 }

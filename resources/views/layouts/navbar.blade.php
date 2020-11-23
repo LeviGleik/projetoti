@@ -32,6 +32,8 @@
         </button>
 		<div class="collapse navbar-collapse" id="navbarContent">
 			<ul class="navbar-nav mr-auto">
+              @auth
+              @if(Auth::user()->professor == 1)
 			  <li class="nav-item dropdown">
 			    <a class="nav-link dropdown-toggle" href="#" id="professor" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 			      Professor
@@ -42,7 +44,9 @@
 			      <div class="dropdown-divider"></div>
 			      <a class="dropdown-item" href="{{ url('api/visualizacao-pontuacao') }}">Visualizar pontuação e classificação</a>
 			    </div>
-			  </li>
+              </li>
+              @endif
+              @endauth
 			  <li class="nav-item dropdown">
 			    <a class="nav-link dropdown-toggle" href="#" id="aluno" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 			      Aluno
