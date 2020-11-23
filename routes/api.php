@@ -36,6 +36,10 @@ Route::namespace('App\Http\Controllers')->name('api.')->group(function(){
         Route::get('/visualizacao-resposta', 'Api\VisualizacaoRespostaController@index')->name('vresposta');
         Route::post('/visualizacao-resposta', 'Api\VisualizacaoRespostaController@store');
         Route::get('/visualizacao-pontuacao', 'Api\VisualizacaoPontuacaoController@index')->name('vpontuacao');
+        Route::get('/visualizacao-pontuacao_d', 'Api\VisualizacaoPontuacaoDController@index')->name('vpontuacao_d');
+        Route::post('/visualizacao-pontuacao_d', 'Api\VisualizacaoPontuacaoDController@store');
+        Route::put('/visualizacao-pontuacao', 'Api\VisualizacaoPontuacaoController@update');
+        Route::delete('/visualizacao-pontuacao', 'Api\VisualizacaoPontuacaoController@delete');
     });
 
 });

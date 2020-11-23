@@ -12,6 +12,9 @@ class VisualizacaoPontuacaoController extends Controller
     public function index(){
         $alunos = new User();
         $disciplinas = new Disciplina();
-        return view('home.vpontuacao', ['disciplinas' => $disciplinas->paginate(15), 'alunos' => $alunos->where('professor', 0)->paginate(15)]);
+        //return view('home.vpontuacao', ['disciplinas' => $disciplinas->paginate(15), 'alunos' => $alunos->where('professor', 0)->paginate(15)]);
+    }
+    public function update(Request $request){
+
     }
 }

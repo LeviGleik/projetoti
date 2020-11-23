@@ -42,7 +42,7 @@
                 <a class="dropdown-item" href="{{ url('api/registro-turma') }}">Cadastrar turmas</a>
 			      <a class="dropdown-item" href="{{ url('api/registro-atividade') }}">Cadastrar atividades</a>
 			      <div class="dropdown-divider"></div>
-			      <a class="dropdown-item" href="{{ url('api/visualizacao-pontuacao') }}">Visualizar pontuação e classificação</a>
+			      <a class="dropdown-item" href="{{ url('api/visualizacao-pontuacao_d') }}">Visualizar pontuação e classificação</a>
 			    </div>
               </li>
               @elseif(Auth::user()->professor == 0)

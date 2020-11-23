@@ -15,6 +15,6 @@ class Disciplina extends Model
     	'nome',
 		'horario',
         'dia',
-        'professor_id'
+        'user_id'
     ];
 }

@@ -15,7 +15,11 @@
         @foreach ($alunos as $aluno)
         <tr>
             <td> {{ $aluno->name }}</td>
-            <td> {{ $disciplinas->find($aluno->id)->nome }}</td>
+            <td>
+                @foreach ($disciplinas as $disciplina)
+                    {{ dd($disciplinas) }}
+                @endforeach
+            </td>
             <td> {{ $aluno->nota }}</td>
         </tr>
         @endforeach
