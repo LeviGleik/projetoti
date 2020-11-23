@@ -18,7 +18,8 @@ class CreateDisciplinasTable extends Migration
             $table->string('nome');
             $table->string('horario');
             $table->string('dia');
-            $table->foreignId('user_id')->constrained();
+            // $table->foreignId('user_id')->constrained();
+            $table->string('user_id')->constrained();
             $table->timestamps();
         });
     }

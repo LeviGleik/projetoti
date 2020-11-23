@@ -61,7 +61,4 @@ class User extends Authenticatable
     protected $appends = [
         'profile_photo_url',
     ];
-    public function disciplinas(){
-        return $this->hasMany('App\Models\Disciplina', 'id', 'disciplina_id');
-    }
 }

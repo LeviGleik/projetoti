@@ -45,8 +45,7 @@
 			      <a class="dropdown-item" href="{{ url('api/visualizacao-pontuacao') }}">Visualizar pontuação e classificação</a>
 			    </div>
               </li>
-              @endif
-              @endauth
+              @elseif(Auth::user()->professor == 0)
 			  <li class="nav-item dropdown">
 			    <a class="nav-link dropdown-toggle" href="#" id="aluno" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 			      Aluno
@@ -57,7 +56,9 @@
 			      <div class="dropdown-divider"></div>
 			      <a class="dropdown-item" href="{{ url('api/visualizacao-resposta') }}">Visualizar repostas</a>
 			    </div>
-			  </li>
+              </li>
+              @endif
+              @endauth
 			</ul>
 
 			<ul class="navbar-nav ml-auto">

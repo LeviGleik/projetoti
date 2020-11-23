@@ -29,7 +29,7 @@ class RegistroTurmaController extends Controller
             $disciplina->create(['nome' => $request['nome'],
                 'horario' => $request['horario'],
                 'dia' => implode(',', $request['dia']),
-                'user_id' => $user->id
+                'professor_id' => $user->id
             ]);
             return response()->view('home.rturma', ['msg' => 'Saved Succesfully'], 201);
         }
