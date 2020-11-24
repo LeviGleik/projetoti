@@ -22,7 +22,7 @@
         </div>
     @endif
 
-    <form method="POST" action="{{ route('api.rturma') }}">
+    <form method="POST" action="{{ route('api.registro-turma.store') }}">
         {{ csrf_field() }}
 		<br />
 
