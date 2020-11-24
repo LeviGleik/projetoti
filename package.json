@@ -23,7 +23,12 @@
         "resolve-url-loader": "^3.1.0",
         "sass": "^1.15.2",
         "sass-loader": "^8.0.0",
-        "tailwindcss": "^1.8.0",
+        "tailwindcss": "^1.9.6",
         "vue-template-compiler": "^2.6.12"
+    },
+    "dependencies": {
+        "@fortawesome/fontawesome-free": "^5.15.1",
+        "autoprefixer": "^10.0.2",
+        "postcss": "^8.1.10"
     }
 }
