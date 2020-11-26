@@ -29,6 +29,7 @@
     "dependencies": {
         "@fortawesome/fontawesome-free": "^5.15.1",
         "autoprefixer": "^10.0.2",
+        "bootstrap-checkbox": "^2.0.0",
         "postcss": "^8.1.10"
     }
 }

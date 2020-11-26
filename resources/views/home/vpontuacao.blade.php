@@ -28,7 +28,13 @@
                     @csrf
                 </form>
             </td>
-            <td> <a class="btn"><i class="far fa-trash-alt"></i> </a></td>
+            <td>
+                <a href="{{ route('api.pontuacao_delete', [$turma->disciplinas->id, $turma->alunos->id]) }}" onclick="event.preventDefault(); document.getElementById('d{{ $turma->id }}').submit();" class="btn"><i class="far fa-trash-alt"></i></a>
+                <form id="d{{ $turma->id }}" action="{{ route('api.pontuacao_delete', [$turma->disciplinas->id, $turma->alunos->id]) }}" method="POST" class="hidden">
+                    @method('delete')
+                    @csrf
+                </form>
+            </td>
         </tr>
         @endforeach
       </tbody>

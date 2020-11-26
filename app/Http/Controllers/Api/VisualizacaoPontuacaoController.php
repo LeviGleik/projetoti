@@ -37,6 +37,26 @@ class VisualizacaoPontuacaoController extends Controller
 
     public function update($id, $user){
         $questoes = new Questoes();
-        return view('home.avaliarturma', ['questoes' => $questoes->where('disciplina_id', '=', $id)->where('user_id', '=', $user)->get()]);
+        return view('home.avaliarturma', ['disciplina' => $id, 'aluno' => $user, 'questoes' => $questoes->where('disciplina_id', '=', $id)->where('user_id', '=', $user)->get()]);
+    }
+    public function save(Request $request, $id, $user){
+        $turma = new Turma();
+        $rules = [
+            'nota' => 'required|min:0|max:10'
+        ];
+        $validator = Validator::make($request->all(), $rules);
+        if($validator->fails()){
+            return response()->json(['errors' => $validator->errors()], 400);
+        } else{
+            $turma->updateOrCreate(['disciplina_id' => $id,
+            'user_id' => $user],['nota' => $request['nota']]);
+            return redirect('/');
+        }
+    }
+    public function delete($id, $user){
+        $turma = new Turma();
+        $aluno = ($turma->where('disciplina_id', '=', $id)->where('user_id', '=', $user)->get()[0]->id);
+        $turma->find($aluno)->delete();
+        return redirect('/');
     }
 }

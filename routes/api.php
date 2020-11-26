@@ -47,7 +47,9 @@ Route::namespace('App\Http\Controllers')->name('api.')->group(function(){
         //Route::get('/visualizacao-pontuacao_d', 'Api\VisualizacaoPontuacaoDController@index')->name('vpontuacao_d');
         Route::post('/visualizacao-pontuacao_d', 'Api\VisualizacaoPontuacaoController@show')->name('vpontuacao_d');
         Route::put('/visualizacao-pontuacao_d/{id}{user}', 'Api\VisualizacaoPontuacaoController@update')->name('pontuacao_d');
-        Route::get('/avaliar-turma', 'Api\PontuacaoController@index')->name('avaliarturma');
+        Route::delete('/visualizacao-pontuacao_d/{id}{user}', 'Api\VisualizacaoPontuacaoController@delete')->name('pontuacao_delete');
+        //Route::get('/avaliar-turma', 'Api\VisualizacaoPontuacaoController@save')->name('avaliarturma');
+        Route::post('/avaliar-turma{id}{user}', 'Api\VisualizacaoPontuacaoController@save')->name('avaliarturma');
         // Route::post('/avaliar-turma', 'Api\PontuacaoController@store');
     });
 

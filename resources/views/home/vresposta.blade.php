@@ -17,7 +17,7 @@
             @endforeach
         </select>
         <label for="ta">Respostas</label>
-        <textarea disabled="" id="ta" class="form-control" style="height: 250px">
+        <textarea disabled="" id="ta" class="form-control" style="font-family: serif; width: 15%; height: 250px; font-weight: bold; font-size: 250%">
 1 - a
 2 - d
 3 - a

@@ -33,8 +33,7 @@ class MatricularTurmaController extends Controller
             }
             $turma->firstOrCreate([
                 'user_id' => $aluno->id,
-                'disciplina_id' => $request['disciplina'],
-                'nota' => 7.0
+                'disciplina_id' => $request['disciplina']
                 ]);
             return response()->view('home.mturma', ['disciplinas' => $disciplina->get(), 'msg' => 'Saved Succesfully'], 201);
         }
