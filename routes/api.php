@@ -19,8 +19,9 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+Route::get('/', [HomeController::class, 'index'])->middleware(['auth:sanctum', 'verified']);
 
-Route::get("/index", [HomeController::class, 'index'])->middleware(['auth:sanctum', 'verified']);
+Route::get('/index', [HomeController::class, 'index'])->middleware(['auth:sanctum', 'verified'])->name('index');
 Route::namespace('App\Http\Controllers')->name('api.')->group(function(){
     Route::get('/', 'HomeController@index')->name('index');
 
@@ -43,11 +44,11 @@ Route::namespace('App\Http\Controllers')->name('api.')->group(function(){
         Route::resource('visualizacao-pontuacao', 'Api\VisualizacaoPontuacaoController', ['except' => [
             'create', 'edit'
           ]]);
-        //Route::get('/visualizacao-pontuacao', 'Api\VisualizacaoPontuacaoController@index')->name('vpontuacao');
-        Route::get('/visualizacao-pontuacao_d', 'Api\VisualizacaoPontuacaoDController@index')->name('vpontuacao_d');
-        Route::post('/visualizacao-pontuacao_d', 'Api\VisualizacaoPontuacaoDController@store');
-        //Route::put('/visualizacao-pontuacao', 'Api\VisualizacaoPontuacaoController@update');
-        //Route::delete('/visualizacao-pontuacao', 'Api\VisualizacaoPontuacaoController@delete');
+        //Route::get('/visualizacao-pontuacao_d', 'Api\VisualizacaoPontuacaoDController@index')->name('vpontuacao_d');
+        Route::post('/visualizacao-pontuacao_d', 'Api\VisualizacaoPontuacaoController@show')->name('vpontuacao_d');
+        Route::put('/visualizacao-pontuacao_d/{id}{user}', 'Api\VisualizacaoPontuacaoController@update')->name('pontuacao_d');
+        Route::get('/avaliar-turma', 'Api\PontuacaoController@index')->name('avaliarturma');
+        // Route::post('/avaliar-turma', 'Api\PontuacaoController@store');
     });
 
 });

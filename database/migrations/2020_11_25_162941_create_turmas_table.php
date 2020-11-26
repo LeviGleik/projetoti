@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateQuestoesTable extends Migration
+class CreateTurmasTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,11 @@ class CreateQuestoesTable extends Migration
      */
     public function up()
     {
-        Schema::create('questoes', function (Blueprint $table) {
+        Schema::create('turmas', function (Blueprint $table) {
             $table->id();
             $table->foreignId('disciplina_id');
-            $table->foreignId('atividade_id');
             $table->foreignId('user_id');
-            $table->string('quest');
+            $table->double('nota')->nullable();
             $table->timestamps();
         });
     }
@@ -30,6 +29,6 @@ class CreateQuestoesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('questoes');
+        Schema::dropIfExists('turmas');
     }
 }

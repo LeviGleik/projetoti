@@ -14,19 +14,20 @@
       </thead>
       <tbody>
 
-        @foreach ($alunos as $aluno)
+        @foreach ($turmas as $turma)
         <tr>
-            <td> {{ $aluno->name }}</td>
+            <td> {{ $turma->alunos->name }}</td>
             <td>
-                {{-- //@foreach ($disciplinas as $disciplina)
-                    //{{ //dd($disciplinas) }}
-                //@endforeach --}}
+                {{ $turma->disciplinas->nome }}
             </td>
-            <td> {{ $aluno->nota }}</td>
-            <td> <a href="{{ route('api.vpontuacao_d', [$aluno->id]) }}" onclick="event.preventDefault(); document.getElementById('update-form').submit();" class="btn"><i class="far fa-edit"></i> </a></td>
-            <form id="submit-form" action="{{ route('api.vpontuacao_d', [$aluno->id]) }}" method="PUT" class="hidden">
-                @csrf
-            </form>
+            <td> {{ $turma->nota }}</td>
+            <td>
+                <a href="{{ route('api.pontuacao_d', [$turma->disciplinas->id, $turma->alunos->id]) }}" onclick="event.preventDefault(); document.getElementById('u{{ $turma->id }}').submit();" class="btn"><i class="far fa-edit"></i> </a>
+                <form id="u{{ $turma->id }}" action="{{ route('api.pontuacao_d', [$turma->disciplinas->id, $turma->alunos->id]) }}" method="POST" class="hidden">
+                    @method('put')
+                    @csrf
+                </form>
+            </td>
             <td> <a class="btn"><i class="far fa-trash-alt"></i> </a></td>
         </tr>
         @endforeach

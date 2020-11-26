@@ -1,9 +1,14 @@
 @extends('layouts.navbar')
 @section('content')
 <div class="container container-fluid">
-    @if($msg == 'Saved Succesfully')
+    @if($msg != '')
         <div class="alert alert-success">
             {{ $msg ?? '' }}
+        </div>
+    @endif
+    @if($error ?? '' != '')
+        <div class="alert alert-danger">
+            {{ $error ?? '' }}
         </div>
     @endif
     <form method="POST" action="{{ route('api.mturma') }}">

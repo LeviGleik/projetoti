@@ -6,21 +6,20 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\Notifiable;
 
-class Questoes extends Model
+class Turma extends Model
 {
     use HasFactory;
-    use Notifiable;
 
+    use Notifiable;
     protected $fillable = [
-    	'quest',
+    	'user_id',
         'disciplina_id',
-        'atividade_id',
-        'user_id'
+        'nota'
     ];
-    public function disciplina(){
+    public function disciplinas(){
         return $this->hasOne('App\Models\Disciplina', 'id', 'disciplina_id');
     }
-    public function aluno(){
+    public function alunos(){
         return $this->hasOne('App\Models\User', 'id', 'user_id');
     }
 }
