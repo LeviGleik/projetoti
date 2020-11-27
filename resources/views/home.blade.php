@@ -10,9 +10,8 @@
 				<img class="img-responsive" src="{{ asset('/images/aluno.jpg') }}" alt="Aluno" width="320" height="260">
 			</div>
 			<ul>
+				<li>Matricular-se em uma turma</li>
 				<li>Resolver atividades</li>
-				<li>Visualizar respostas</li>
-				<li>Comparar respostas com outros alunos</li>
 			</ul>
 		</div>
 		<div class="col-md">

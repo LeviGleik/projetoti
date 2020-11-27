@@ -18,6 +18,7 @@ class CreateQuestoesTable extends Migration
             $table->foreignId('disciplina_id');
             $table->foreignId('atividade_id');
             $table->foreignId('user_id');
+            $table->unique(['disciplina_id', 'user_id']);
             $table->string('quest');
             $table->timestamps();
         });

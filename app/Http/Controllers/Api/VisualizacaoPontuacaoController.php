@@ -36,25 +36,31 @@ class VisualizacaoPontuacaoController extends Controller
     }
 
     public function update($id, $user){
+        $turma = new Turma();
         $questoes = new Questoes();
-        return view('home.avaliarturma', ['disciplina' => $id, 'aluno' => $user, 'questoes' => $questoes->where('disciplina_id', '=', $id)->where('user_id', '=', $user)->get()]);
+        $questoes = $questoes->where('disciplina_id', '=', $id)->where('user_id', '=', $user)->get();
+        $turma = $turma->where([['disciplina_id', '=', $id], ['user_id', '=', $user]])->get();
+        return view('home.avaliarturma', ['msg'=> '', 'turma' => $turma[0], 'disciplina' => $id, 'aluno' => $user, 'questoes' => $questoes]);
     }
     public function save(Request $request, $id, $user){
         $turma = new Turma();
+        $questoes = new Questoes();
         $rules = [
             'nota' => 'required|min:0|max:10'
         ];
+        $turmas = $turma->where([['disciplina_id', '=', $id], ['user_id', '=', $user]])->get();
         $validator = Validator::make($request->all(), $rules);
         if($validator->fails()){
             return response()->json(['errors' => $validator->errors()], 400);
         } else{
             $turma->updateOrCreate(['disciplina_id' => $id,
             'user_id' => $user],['nota' => $request['nota']]);
-            return redirect('/');
+            return response()->view('home.avaliarturma', ['turma' => $turmas[0], 'msg'=> 'Nota gravada com sucesso', 'disciplina' => $id, 'aluno' => $user, 'questoes' => $questoes->where('disciplina_id', '=', $id)->where('user_id', '=', $user)->get()]);
         }
     }
     public function delete($id, $user){
         $turma = new Turma();
+        $questoes = new Questoes();
         $aluno = ($turma->where('disciplina_id', '=', $id)->where('user_id', '=', $user)->get()[0]->id);
         $turma->find($aluno)->delete();
         return redirect('/');

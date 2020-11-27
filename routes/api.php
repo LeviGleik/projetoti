@@ -40,7 +40,7 @@ Route::namespace('App\Http\Controllers')->name('api.')->group(function(){
             'create', 'edit', 'update', 'delete'
           ]]);
         Route::get('/visualizacao-resposta', 'Api\VisualizacaoRespostaController@index')->name('vresposta');
-        Route::post('/visualizacao-resposta', 'Api\VisualizacaoRespostaController@store');
+        Route::post('/visualizacao-resposta', 'Api\VisualizacaoRespostaController@show');
         Route::resource('visualizacao-pontuacao', 'Api\VisualizacaoPontuacaoController', ['except' => [
             'create', 'edit'
           ]]);

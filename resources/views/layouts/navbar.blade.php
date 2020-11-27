@@ -54,7 +54,7 @@
 			      <a class="dropdown-item" href="{{ url('api/matricular-turma') }}">Matricular-se em turma</a>
 			      <a class="dropdown-item" href="{{ url('api/realizar-atividade') }}">Realizar atividade</a>
 			      <div class="dropdown-divider"></div>
-			      <a class="dropdown-item" href="{{ url('api/visualizacao-resposta') }}">Visualizar repostas</a>
+			      <a class="dropdown-item" href="{{ url('api/visualizacao-resposta') }}">Visualizar nota</a>
 			    </div>
               </li>
               @endif
