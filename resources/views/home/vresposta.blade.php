@@ -29,6 +29,10 @@
                 {{ $turma[0]->nota }}
             </div>
             @endif
+        @else
+            <div class="alert alert-danger">
+                <label>Aluno sem nota</label>
+            </div>
         @endif
         <br />
         <button class="btn btn-outline-secondary" type="submit">Enviar</button>

@@ -6,6 +6,20 @@
             {{ $msg ?? '' }}
         </div>
     @endif
+
+    @if(isset($turma->nota))
+        @if($turma->nota >= 7)
+        <div class="alert alert-success">
+            <label>Nota</label>
+            {{ $turma->nota }}
+        </div>
+        @else
+        <div class="alert alert-danger">
+            <label>Nota</label>
+            {{ $turma->nota }}
+        </div>
+        @endif
+    @endif
     <form method="POST" action="{{ route('api.avaliarturma', [$disciplina, $aluno]) }}">
         {{ csrf_field() }}
         <section class="container grid grid-c3">
@@ -27,7 +41,7 @@
         </section>
         <br />
         <label for="nota">Nota</label>
-        <input name="nota" type="number" min="0" max="10" class="form-control" style="width: 150px" id="nota">
+        <input name="nota" type="number" value="{{ $turma->nota }}" min="0" max="10" class="form-control" style="width: 150px" id="nota">
         <br />
         <button class="btn btn-outline-secondary" type="submit">Enviar</button>
     </form>
